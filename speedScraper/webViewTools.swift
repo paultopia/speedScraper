@@ -27,3 +27,8 @@ extension WKWebView {
         loadHTMLString(testHtml, baseURL: nil)
         }
 }
+
+let extractContentJS = """
+var content = document.innerText
+window.webkit.messageHandlers.jsHandler.postMessage(content);
+"""

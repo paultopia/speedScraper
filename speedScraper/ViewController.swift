@@ -19,12 +19,14 @@ class ViewController: NSViewController {
     }
     
     @IBAction func linkButtonPressed(_ sender: Any) {
-        webView.test()
-        print("trying to load local string")
+        //webView.test()
+        //print("trying to load local string")
+        webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        webView.configuration.userContentController.add(self, name: "jsHandler")
 
         // Do any additional setup after loading the view.
 
@@ -39,3 +41,10 @@ class ViewController: NSViewController {
 
 }
 
+extension ViewController: WKScriptMessageHandler {
+    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+        if message.name == "jsHandler" {
+            print(message.body)
+        }
+    }
+}
