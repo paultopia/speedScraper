@@ -11,6 +11,7 @@
 		F7B16B0422A9AA8D008240FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B16B0322A9AA8D008240FC /* ViewController.swift */; };
 		F7B16B0622A9AA8E008240FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7B16B0522A9AA8E008240FC /* Assets.xcassets */; };
 		F7B16B0922A9AA8E008240FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B16B0722A9AA8E008240FC /* Main.storyboard */; };
+		F7B16B1222A9AD0A008240FC /* webViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B16B1122A9AD0A008240FC /* webViewTools.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		F7B16B0822A9AA8E008240FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F7B16B0A22A9AA8E008240FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7B16B0B22A9AA8E008240FC /* speedScraper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = speedScraper.entitlements; sourceTree = "<group>"; };
+		F7B16B1122A9AD0A008240FC /* webViewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewTools.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			children = (
 				F7B16B0122A9AA8D008240FC /* AppDelegate.swift */,
 				F7B16B0322A9AA8D008240FC /* ViewController.swift */,
+				F7B16B1122A9AD0A008240FC /* webViewTools.swift */,
 				F7B16B0522A9AA8E008240FC /* Assets.xcassets */,
 				F7B16B0722A9AA8E008240FC /* Main.storyboard */,
 				F7B16B0A22A9AA8E008240FC /* Info.plist */,
@@ -95,6 +98,11 @@
 				TargetAttributes = {
 					F7B16AFD22A9AA8D008240FC = {
 						CreatedOnToolsVersion = 10.2.1;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -133,6 +141,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B16B1222A9AD0A008240FC /* webViewTools.swift in Sources */,
 				F7B16B0422A9AA8D008240FC /* ViewController.swift in Sources */,
 				F7B16B0222A9AA8D008240FC /* AppDelegate.swift in Sources */,
 			);
