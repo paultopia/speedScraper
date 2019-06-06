@@ -29,6 +29,6 @@ extension WKWebView {
 }
 
 let extractContentJS = """
-var content = document.innerText
-window.webkit.messageHandlers.jsHandler.postMessage(content);
+document.body.style.backgroundColor = "red";
+window.webkit.messageHandlers.jsHandler.postMessage("test");
 """

@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     @IBOutlet var webView: WKWebView!
     
     @IBAction func loadButtonPressed(_ sender: Any) {
-        webView.load("https://www.apple.com/")
+        webView.load("http://paultopia.org")
         print("trying to load from remote")
     }
     
