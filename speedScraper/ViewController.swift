@@ -44,7 +44,11 @@ class ViewController: NSViewController {
 extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "jsHandler" {
-            print(message.body)
+            let incoming = message.body
+            print(incoming)
+            let links = decodeLinks(incoming as! String)
+            print(links[0].href)
+            
         }
     }
 }

@@ -33,3 +33,13 @@ document.body.style.backgroundColor = "red";
 var links = JSON.stringify(Array.prototype.slice.call(document.getElementsByTagName('a')).map(x => ({text: x.text, href: x.href})));
 window.webkit.messageHandlers.jsHandler.postMessage(links);
 """
+struct Links: Codable {
+    let text: String
+    let href: String
+}
+
+func decodeLinks(_ inLinks: String) -> [Links] {
+    let decoder = JSONDecoder()
+    let outLinks = try! decoder.decode([Links].self, from: inLinks.data(using: .utf8)!)
+    return outLinks
+}
