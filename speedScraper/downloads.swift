@@ -34,9 +34,8 @@ struct Downloader {
         }
         
     }
-    func download(inURL: String){
+    func download(inURL: String, filename: String){
         let url = URL(string: inURL)!
-        let filename = url.lastPathComponent
         let downloadTask = URLSession.shared.downloadTask(with: url) {
             urlOrNil, responseOrNil, errorOrNil in
             
@@ -62,6 +61,11 @@ struct Downloader {
             }
         }
         downloadTask.resume()
+    }
+    func download(inURL: String) {
+        let url = URL(string: inURL)!
+        let filename = url.lastPathComponent
+        download(inURL: inURL, filename: filename)
     }
 }
 

@@ -14,7 +14,7 @@ class ViewController: NSViewController {
     @IBOutlet var webView: WKWebView!
     
     @IBAction func loadButtonPressed(_ sender: Any) {
-        webView.load("http://paultopia.org")
+        webView.load("http://gowder.io/#pubs")
         print("trying to load from remote")
     }
     
@@ -26,7 +26,7 @@ class ViewController: NSViewController {
     
     
     @IBAction func testDownloadButtonPressed(_ sender: Any) {
-        let testDL = "https://www.erudit.org/fr/revues/ateliers/2014-v9-n1-ateliers01328/1024296ar.pdf"
+        let testDL = "http://paul-gowder.com/iv-paper.pdf"
         let downloader = Downloader()
         print(downloader.dirPath.absoluteString)
         print(downloader.dirPath)
