@@ -19,8 +19,7 @@ class ViewController: NSViewController {
     }
     
     @IBAction func linkButtonPressed(_ sender: Any) {
-        //webView.test()
-        //print("trying to load local string")
+
         webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
     }
     

@@ -13,6 +13,7 @@
 		F7B16B0922A9AA8E008240FC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7B16B0722A9AA8E008240FC /* Main.storyboard */; };
 		F7B16B1222A9AD0A008240FC /* webViewTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B16B1122A9AD0A008240FC /* webViewTools.swift */; };
 		F7B16B1422A9C88F008240FC /* downloads.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B16B1322A9C88F008240FC /* downloads.swift */; };
+		F7B16B1622AB23D9008240FC /* links.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7B16B1522AB23D9008240FC /* links.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		F7B16B0B22A9AA8E008240FC /* speedScraper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = speedScraper.entitlements; sourceTree = "<group>"; };
 		F7B16B1122A9AD0A008240FC /* webViewTools.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = webViewTools.swift; sourceTree = "<group>"; };
 		F7B16B1322A9C88F008240FC /* downloads.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = downloads.swift; sourceTree = "<group>"; };
+		F7B16B1522AB23D9008240FC /* links.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = links.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				F7B16B0122A9AA8D008240FC /* AppDelegate.swift */,
 				F7B16B0322A9AA8D008240FC /* ViewController.swift */,
 				F7B16B1122A9AD0A008240FC /* webViewTools.swift */,
+				F7B16B1522AB23D9008240FC /* links.swift */,
 				F7B16B0522A9AA8E008240FC /* Assets.xcassets */,
 				F7B16B0722A9AA8E008240FC /* Main.storyboard */,
 				F7B16B0A22A9AA8E008240FC /* Info.plist */,
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7B16B1622AB23D9008240FC /* links.swift in Sources */,
 				F7B16B1222A9AD0A008240FC /* webViewTools.swift in Sources */,
 				F7B16B1422A9C88F008240FC /* downloads.swift in Sources */,
 				F7B16B0422A9AA8D008240FC /* ViewController.swift in Sources */,
