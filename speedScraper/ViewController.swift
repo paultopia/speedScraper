@@ -27,8 +27,10 @@ class ViewController: NSViewController {
     
     @IBAction func testDownloadButtonPressed(_ sender: Any) {
         let testDL = "https://www.erudit.org/fr/revues/ateliers/2014-v9-n1-ateliers01328/1024296ar.pdf"
-        
-        download(inURL: testDL)
+        let downloader = Downloader()
+        print(downloader.dirPath.absoluteString)
+        print(downloader.dirPath)
+        downloader.download(inURL: testDL)
     }
     
     override func viewDidLoad() {
