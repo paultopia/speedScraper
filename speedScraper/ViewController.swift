@@ -24,6 +24,13 @@ class ViewController: NSViewController {
         webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
     }
     
+    
+    @IBAction func testDownloadButtonPressed(_ sender: Any) {
+        let testDL = "https://www.erudit.org/fr/revues/ateliers/2014-v9-n1-ateliers01328/1024296ar.pdf"
+        
+        download(inURL: testDL)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.configuration.userContentController.add(self, name: "jsHandler")

@@ -41,7 +41,6 @@
 		F7B16AF522A9AA8D008240FC = {
 			isa = PBXGroup;
 			children = (
-				F7B16B1322A9C88F008240FC /* downloads.swift */,
 				F7B16B0022A9AA8D008240FC /* speedScraper */,
 				F7B16AFF22A9AA8D008240FC /* Products */,
 			);
@@ -58,6 +57,7 @@
 		F7B16B0022A9AA8D008240FC /* speedScraper */ = {
 			isa = PBXGroup;
 			children = (
+				F7B16B1322A9C88F008240FC /* downloads.swift */,
 				F7B16B0122A9AA8D008240FC /* AppDelegate.swift */,
 				F7B16B0322A9AA8D008240FC /* ViewController.swift */,
 				F7B16B1122A9AD0A008240FC /* webViewTools.swift */,

@@ -710,7 +710,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <wkWebView wantsLayer="YES" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cio-c0-yB8">
-                                <rect key="frame" x="10" y="11" width="459" height="49"/>
+                                <rect key="frame" x="453" y="11" width="16" height="6"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <wkWebViewConfiguration key="configuration">
                                     <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
@@ -737,6 +737,17 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="linkButtonPressed:" target="XfG-lQ-9wD" id="QKm-Ef-DK5"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bxg-7t-H5x">
+                                <rect key="frame" x="5" y="93" width="126" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="test download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Pzy-77-Hzs">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="testDownloadButtonPressed:" target="XfG-lQ-9wD" id="iSQ-0Y-2R6"/>
                                 </connections>
                             </button>
                         </subviews>

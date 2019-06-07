@@ -29,12 +29,12 @@ func download(inURL: String){
         
         guard let fileURL = urlOrNil else { return }
         do {
-            let documentsURL = try
+            let downloadsURL = try
                 FileManager.default.url(for: .downloadsDirectory,
                                         in: .userDomainMask,
                                         appropriateFor: nil,
                                         create: false)
-            let savedURL = documentsURL.appendingPathComponent(
+            let savedURL = downloadsURL.appendingPathComponent(
                 fileURL.lastPathComponent)
             try FileManager.default.moveItem(at: fileURL, to: savedURL)
         } catch {
