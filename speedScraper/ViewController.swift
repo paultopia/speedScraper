@@ -14,8 +14,15 @@ class ViewController: NSViewController {
     @IBOutlet var webView: WKWebView!
     
     @IBAction func loadButtonPressed(_ sender: Any) {
-        webView.load("http://gowder.io/#pubs")
         print("trying to load from remote")
+        webView.load("http://gowder.io/#pubs")
+        print("waiting...")
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
+            print("now trying to print links")
+            self.webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
+            // Put your code which should be executed with a delay here
+        })
+        
     }
     
     @IBAction func linkButtonPressed(_ sender: Any) {
