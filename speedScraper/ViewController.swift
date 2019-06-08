@@ -62,7 +62,11 @@ extension ViewController: WKScriptMessageHandler {
             let incoming = message.body
             //print(incoming)
             let links = decodeLinks(incoming as! String)
-            print(links.dedupe().onlyPDFs().map {$0.href})
+            let cleanLinks = links.dedupe().onlyPDFs()
+            print(cleanLinks.map {$0.href})
+            print("here comes the great experiment!")
+            let downloader = Downloader()
+            downloader.download(linkList: cleanLinks)
             
         }
     }

@@ -67,6 +67,15 @@ struct Downloader {
         let filename = url.lastPathComponent
         download(inURL: inURL, filename: filename)
     }
+    // assumes I just want to download stuff with defined filenames.
+    func download(link: Link){
+            guard let filename = link.extractFilename()?.filename else {return}
+            download(inURL: link.href, filename: filename)
+    }
+    
+    func download(linkList: LinkList){
+        linkList.links.forEach {download(link: $0)}
+    }
 }
 
 
