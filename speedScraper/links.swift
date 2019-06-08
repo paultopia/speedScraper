@@ -23,18 +23,6 @@ struct Link {
     let text: String
     let href: String
     let filename: String?
-    
-    func defrag() -> Link? {
-        guard let url = URL(string: href) else {
-            return nil
-        }
-        if let fragment = url.fragment {
-            let output = url.absoluteString.replacingOccurrences(of: "#\(fragment)", with: "")
-            return Link(text: text, href: output, filename: filename)
-        } else {
-            return Link(text: text, href: href, filename: filename)
-        }
-    }
 }
 
 extension Link {
@@ -72,5 +60,19 @@ extension LinkList: Collection {
     }
     func index(after i: Index) -> Index {
         return links.index(after: i)
+    }
+}
+
+extension Link {
+    func defrag() -> Link? {
+        guard let url = URL(string: href) else {
+            return nil
+        }
+        if let fragment = url.fragment {
+            let output = url.absoluteString.replacingOccurrences(of: "#\(fragment)", with: "")
+            return Link(text: text, href: output, filename: filename)
+        } else {
+            return Link(text: text, href: href, filename: filename)
+        }
     }
 }
