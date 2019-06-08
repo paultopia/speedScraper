@@ -33,6 +33,10 @@ extension Link {
     }
 }
 
+// what do I do about basename problems in scraped URLS?  I don't have anything to resolve relative urls right at the moment.  (Can I do it in the javascript?!)
+// maybe JS already does this?!  Need to test. https://stackoverflow.com/a/14781678/4386239 
+
+
 struct LinkList {
     typealias LinksType = [Link]
     var links: LinksType
@@ -137,5 +141,50 @@ extension LinkList {
     }
     func withFilenames() -> LinkList {
         return LinkList(links.compactMap {$0.extractFilename()})
+    }
+}
+
+
+// EXPERIMENTAL/UNTESTED:
+
+// swiped from https://www.hackingwithswift.com/articles/108/how-to-use-regular-expressions-in-swift
+extension NSRegularExpression {
+    func matches(_ string: String) -> Bool {
+        let range = NSRange(location: 0, length: string.utf16.count)
+        return firstMatch(in: string, options: [], range: range) != nil
+    }
+}
+
+extension LinkList {
+
+    enum RegexTarget {
+        case text
+        case href
+        case filename
+    }
+
+    func filterByFileExtensions(extensions: [String]) -> LinkList {
+        let onlyFiles = withFilenames()
+        let filtered = LinkList.filter {extensions.contains(URL(string: $0.href)!.pathExtension)}
+        // I really should just work with URLS rather than keep converting back and forth to strings...
+        return LinkList(filtered) 
+        // I also should really take map/filter/reduce and return LinkList from them?    
+    }
+    
+    func filterByRegex(pattern: String, target: RegexTarget) -> LinkList {
+        guard let regex = try? NSRegularExpression(pattern: pattern) else {
+            return self // just ignore if passed a regular expression that doesn't work.
+        }
+        var filtered = [Link]
+        switch RegexTarget {
+            case .text:
+                let filtered = LinkList.filter {regex.matches($0.text)}
+            case .href:
+                let filtered = LinkList.filter {regex.matches($0.href)}
+            case .filename:
+                let filtered = LinkList.filter {regex.matches($0.filename)}
+        }
+        
+        return LinkList(filtered) 
     }
 }
