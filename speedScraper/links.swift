@@ -76,3 +76,42 @@ extension Link {
         }
     }
 }
+
+extension Link: Equatable, Hashable {
+    static func ==(lhs: Link, rhs: Link) -> Bool {
+        return lhs.href == rhs.href
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(href)
+    }
+}
+
+extension LinkList {
+    func defrag() -> LinkList {
+        let cleanLinks: [Link] = links.compactMap {$0.defrag()}
+        return LinkList(cleanLinks)
+    }
+    init(_ links: Set<Link>){
+        self.links = Array(links)
+    }
+    func dedupe() -> LinkList {
+        return LinkList(Set(links))
+    }
+}
+
+// these next two extensions will go away when I devise a cleaner way to cook up an enum or something with filtration options attached.
+
+extension Link {
+    func isPDF() -> Bool {
+        guard let exten = URL(string: href)?.pathExtension else {
+            return false
+        }
+        return exten == "pdf"
+    }
+}
+extension LinkList {
+    func onlyPDFs() -> LinkList {
+        return LinkList(links.filter({$0.isPDF()}))
+    }
+}

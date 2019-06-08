@@ -53,9 +53,9 @@ extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "jsHandler" {
             let incoming = message.body
-            print(incoming)
+            //print(incoming)
             let links = decodeLinks(incoming as! String)
-            print(links[0].href)
+            print(links.dedupe().onlyPDFs().map {$0.href})
             
         }
     }
