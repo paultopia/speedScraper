@@ -165,7 +165,7 @@ extension LinkList {
 
     func filterByFileExtensions(extensions: [String]) -> LinkList {
         let onlyFiles = withFilenames()
-        let filtered = LinkList.filter {extensions.contains(URL(string: $0.href)!.pathExtension)}
+        let filtered = onlyFiles.filter {extensions.contains(URL(string: $0.href)!.pathExtension)}
         // I really should just work with URLS rather than keep converting back and forth to strings...
         return LinkList(filtered) 
         // I also should really take map/filter/reduce and return LinkList from them?    
@@ -175,14 +175,14 @@ extension LinkList {
         guard let regex = try? NSRegularExpression(pattern: pattern) else {
             return self // just ignore if passed a regular expression that doesn't work.
         }
-        var filtered = [Link]
-        switch RegexTarget {
+        var filtered: [Link]
+        switch target {
             case .text:
-                let filtered = LinkList.filter {regex.matches($0.text)}
+                filtered = links.filter {regex.matches($0.text)}
             case .href:
-                let filtered = LinkList.filter {regex.matches($0.href)}
+                filtered = links.filter {regex.matches($0.href)}
             case .filename:
-                let filtered = LinkList.filter {regex.matches($0.filename)}
+                filtered = withFilenames().filter {regex.matches($0.filename!)}
         }
         
         return LinkList(filtered) 
