@@ -147,10 +147,10 @@ extension NSRegularExpression {
 
 extension LinkList {
 
-    enum RegexTarget {
-        case text
-        case href
-        case filename
+    enum RegexTarget: String, CaseIterable {
+        case text = "text of link"
+        case href = "link address"
+        case filename = "filename"
     }
     
     // this one works:
@@ -179,3 +179,4 @@ extension LinkList {
         return LinkList(filtered) 
     }
 }
+

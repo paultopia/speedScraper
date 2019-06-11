@@ -67,11 +67,26 @@ class ViewController: NSViewController {
         }
     }
     
+    // regex functionality
+    
+    
+    @IBOutlet var regexPopup: NSPopUpButton!
+    
+    let regexOptions = LinkList.RegexTarget.allCases.map {$0.rawValue}
+    
+    @IBOutlet var regexField: NSTextField!
+    @IBAction func regexFilterButtonPressed(_ sender: Any) {
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.configuration.userContentController.add(self, name: "jsHandler")
         tableView.delegate = self
         tableView.dataSource = self
+        
+        regexPopup.removeAllItems()
+        regexPopup.addItems(withTitles: regexOptions)
+        regexPopup.selectItem(at: 0)
 
         // Do any additional setup after loading the view.
 

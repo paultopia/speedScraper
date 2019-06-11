@@ -980,6 +980,63 @@
                                     <action selector="filterButtonPressed:" target="XfG-lQ-9wD" id="vcp-Ze-NXi"/>
                                 </connections>
                             </button>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-4C-RkC">
+                                <rect key="frame" x="21" y="83" width="77" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="16u-SB-UFr" id="eyq-Ya-3Lc">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="EbO-kD-YwC">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="16u-SB-UFr"/>
+                                            <menuItem title="Item 2" id="43B-19-WrS"/>
+                                            <menuItem title="Item 3" id="s72-CD-GSy"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PD-0f-qfz">
+                                <rect key="frame" x="20" y="128" width="244" height="17"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Filter downloads by regular expression: " id="u8s-aU-ZJ9">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="qbq-6D-6lL">
+                                <rect key="frame" x="20" y="185" width="651" height="5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </box>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nKb-7i-Mqp">
+                                <rect key="frame" x="20" y="153" width="77" height="19"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Advanced" id="bMh-zP-ZAC">
+                                    <font key="font" metaFont="system" size="16"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-ox-uJ8">
+                                <rect key="frame" x="141" y="79" width="127" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Filter by regex" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2P2-jZ-MAn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="regexFilterButtonPressed:" target="XfG-lQ-9wD" id="fNc-Fu-xLc"/>
+                                </connections>
+                            </button>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ph-eb-Y42">
+                                <rect key="frame" x="270" y="106" width="302" height="22"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="enter regex (or normal string) here" drawsBackground="YES" id="gST-Ge-3ZE">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="IEm-79-zL3" secondAttribute="trailing" constant="128" id="5ss-KJ-ZAg"/>
@@ -990,6 +1047,8 @@
                     </view>
                     <connections>
                         <outlet property="filterField" destination="8V7-Ve-GdB" id="eqh-mP-Tf9"/>
+                        <outlet property="regexField" destination="3ph-eb-Y42" id="76q-DN-6Th"/>
+                        <outlet property="regexPopup" destination="WFd-4C-RkC" id="oPP-oH-hh3"/>
                         <outlet property="tableView" destination="Bdv-6W-ah7" id="Ygf-Bn-IQt"/>
                         <outlet property="urlToScrape" destination="Xe3-aK-LH5" id="pOd-oR-nQq"/>
                         <outlet property="webView" destination="cio-c0-yB8" id="jHb-gb-4Cx"/>
