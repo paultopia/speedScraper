@@ -104,21 +104,8 @@ extension LinkList {
     }
 }
 
-// these next two extensions will go away when I devise a cleaner way to cook up an enum or something with filtration options attached.
 
 extension Link {
-    func isPDF() -> Bool {
-        guard let exten = URL(string: href)?.pathExtension else {
-            return false
-        }
-        return exten == "pdf"
-    }
-    func isZip() -> Bool {
-        guard let exten = URL(string: href)?.pathExtension else {
-            return false
-        }
-        return exten == "zip"
-    }
     // this assumes that links without files will just return html pages that aren't for download.
     // this assumption is bullshit, but it'll do for a start to test basic functionality.
     func isFile() -> Bool {
@@ -142,12 +129,6 @@ extension Link {
 }
 
 extension LinkList {
-    func onlyPDFs() -> LinkList {
-        return LinkList(links.filter({$0.isPDF()}))
-    }
-    func onlyZips() -> LinkList {
-        return LinkList(links.filter({$0.isZip()}))
-    }
     func withFilenames() -> LinkList {
         return LinkList(links.compactMap {$0.extractFilename()})
     }
@@ -171,7 +152,8 @@ extension LinkList {
         case href
         case filename
     }
-
+    
+    // this one works:
     func filterByFileExtensions(extensions: [String]) -> LinkList {
         let onlyFiles = withFilenames()
         let filtered = onlyFiles.filter {extensions.contains(URL(string: $0.href)!.pathExtension)}

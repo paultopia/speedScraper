@@ -21,13 +21,11 @@ class ViewController: NSViewController {
     @IBAction func loadButtonPressed(_ sender: Any) {
         print("trying to load from remote")
         let toLoad = urlToScrape.stringValue
-        //webView.load("http://gowder.io/#pubs")
         webView.load(toLoad)
         print("waiting...")
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             print("now trying to print links")
             self.webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
-            // Put your code which should be executed with a delay here
         })
         
     }
@@ -92,16 +90,9 @@ extension ViewController: WKScriptMessageHandler {
     func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         if message.name == "jsHandler" {
             let incoming = message.body
-            //print(incoming)
             let links = decodeLinks(incoming as! String)
             state.loadUp(links.defrag().withFilenames())
             tableView.reloadData()
-            //let cleanLinks = links.dedupe().onlyPDFs()
-            //print(cleanLinks.map {$0.href})
-            //print("here comes the great experiment!")
-            //let downloader = Downloader()
-            //downloader.download(linkList: cleanLinks)
-            
         }
     }
 }
