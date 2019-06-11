@@ -113,6 +113,12 @@ extension Link {
         }
         return exten == "pdf"
     }
+    func isZip() -> Bool {
+        guard let exten = URL(string: href)?.pathExtension else {
+            return false
+        }
+        return exten == "zip"
+    }
     // this assumes that links without files will just return html pages that aren't for download.
     // this assumption is bullshit, but it'll do for a start to test basic functionality.
     func isFile() -> Bool {
@@ -138,6 +144,9 @@ extension Link {
 extension LinkList {
     func onlyPDFs() -> LinkList {
         return LinkList(links.filter({$0.isPDF()}))
+    }
+    func onlyZips() -> LinkList {
+        return LinkList(links.filter({$0.isZip()}))
     }
     func withFilenames() -> LinkList {
         return LinkList(links.compactMap {$0.extractFilename()})

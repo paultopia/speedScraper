@@ -36,7 +36,7 @@ class ViewController: NSViewController {
         //let testDL = "http://paul-gowder.com/iv-paper.pdf"
         let downloader = Downloader()
         if let targets =  state.currentLinks {
-            downloader.download(linkList: targets.dedupe().onlyPDFs())
+            downloader.download(linkList: targets.dedupe().onlyZips())
         }
         //print(downloader.dirPath.absoluteString)
         //print(downloader.dirPath)
