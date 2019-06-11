@@ -16,10 +16,13 @@ class ViewController: NSViewController {
     @IBOutlet var webView: WKWebView!
     
     @IBOutlet var tableView: NSTableView!
+    @IBOutlet var urlToScrape: NSTextField!
     
     @IBAction func loadButtonPressed(_ sender: Any) {
         print("trying to load from remote")
-        webView.load("http://gowder.io/#pubs")
+        let toLoad = urlToScrape.stringValue
+        //webView.load("http://gowder.io/#pubs")
+        webView.load(toLoad)
         print("waiting...")
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             print("now trying to print links")
