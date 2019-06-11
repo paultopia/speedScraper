@@ -33,14 +33,40 @@ class ViewController: NSViewController {
     }
     
     @IBAction func testDownloadButtonPressed(_ sender: Any) {
-        //let testDL = "http://paul-gowder.com/iv-paper.pdf"
         let downloader = Downloader()
         if let targets =  state.currentLinks {
-            downloader.download(linkList: targets.dedupe().onlyZips())
+            downloader.download(linkList: targets.dedupe())
         }
-        //print(downloader.dirPath.absoluteString)
-        //print(downloader.dirPath)
-        //downloader.download(inURL: testDL)
+    }
+    
+    // list manipulation functionality:
+    
+    @IBOutlet var filterField: NSTextField!
+    @IBAction func removeButtonPressed(_ sender: Any) {
+        guard (tableView.selectedRow >= 0) else {
+            return
+        }
+        guard var current = state.currentLinks?.links else {
+            return
+        }
+        current.remove(at: tableView.selectedRow)
+        state.currentLinks = LinkList(current)
+        tableView.reloadData()
+    }
+    
+    @IBAction func resetButtonPressed(_ sender: Any) {
+        if let originalLinks = state.downloadedLinks {
+            state.currentLinks = originalLinks
+            tableView.reloadData()
+        }
+    }
+    
+    @IBAction func filterButtonPressed(_ sender: Any) {
+        let extens = filterField.stringValue.components(separatedBy: ",")
+        if let originalLinks = state.downloadedLinks {
+            state.currentLinks = originalLinks.filterByFileExtensions(extensions: extens)
+            tableView.reloadData()
+        }
     }
     
     override func viewDidLoad() {

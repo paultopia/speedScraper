@@ -822,7 +822,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="3Ao-gn-15i">
-                                                                    <rect key="frame" x="328" y="1" width="311" height="17"/>
+                                                                    <rect key="frame" x="327.5" y="1" width="311" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GOA-UZ-V4a">
@@ -936,6 +936,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="removeButtonPressed:" target="XfG-lQ-9wD" id="hv1-Q0-ojp"/>
+                                </connections>
                             </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fRw-sf-NaX">
                                 <rect key="frame" x="679" y="563" width="23" height="29"/>
@@ -944,6 +947,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="resetButtonPressed:" target="XfG-lQ-9wD" id="UWL-ch-Cbj"/>
+                                </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Efw-dF-BkD">
                                 <rect key="frame" x="18" y="686" width="414" height="17"/>
@@ -970,6 +976,9 @@
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
+                                <connections>
+                                    <action selector="filterButtonPressed:" target="XfG-lQ-9wD" id="vcp-Ze-NXi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -980,6 +989,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="filterField" destination="8V7-Ve-GdB" id="eqh-mP-Tf9"/>
                         <outlet property="tableView" destination="Bdv-6W-ah7" id="Ygf-Bn-IQt"/>
                         <outlet property="urlToScrape" destination="Xe3-aK-LH5" id="pOd-oR-nQq"/>
                         <outlet property="webView" destination="cio-c0-yB8" id="jHb-gb-4Cx"/>
