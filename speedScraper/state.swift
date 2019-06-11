@@ -19,4 +19,11 @@ final class State {
         downloadedLinks = linkList
         currentLinks = linkList
     }
+    
+    func printCurrentState(){
+        let jsonEncoder = JSONEncoder()
+        let jsonData = try! jsonEncoder.encode(currentLinks!)
+        let jsonString = String(data: jsonData, encoding: .utf8)
+        print(jsonString)
+    }
 }

@@ -24,6 +24,6 @@ extension WKWebView {
 
 let extractContentJS = """
 document.body.style.backgroundColor = "red";
-var links = JSON.stringify(Array.prototype.slice.call(document.getElementsByTagName('a')).map(x => ({text: x.text, href: x.href})));
+var links = JSON.stringify(Array.prototype.slice.call(document.getElementsByTagName('a')).map(x => ({textOfLink: x.text, href: x.href})));
 window.webkit.messageHandlers.jsHandler.postMessage(links);
 """

@@ -15,19 +15,19 @@
 import Foundation
 
 struct InLink: Codable {
-    let text: String
+    let textOfLink: String
     let href: String
 }
 
-struct Link {
-    let text: String
+struct Link: Codable {
+    let textOfLink: String
     let href: String
     let filename: String?
 }
 
 extension Link {
     init(_ inLink: InLink){
-        text = inLink.text
+        textOfLink = inLink.textOfLink
         href = inLink.href
         filename = nil
     }
@@ -37,7 +37,7 @@ extension Link {
 // maybe JS already does this?!  Need to test. https://stackoverflow.com/a/14781678/4386239 
 
 
-struct LinkList {
+struct LinkList: Codable {
     typealias LinksType = [Link]
     var links: LinksType
     init(_ links: [Link]) {
@@ -74,9 +74,9 @@ extension Link {
         }
         if let fragment = url.fragment {
             let output = url.absoluteString.replacingOccurrences(of: "#\(fragment)", with: "")
-            return Link(text: text, href: output, filename: filename)
+            return Link(textOfLink: textOfLink, href: output, filename: filename)
         } else {
-            return Link(text: text, href: href, filename: filename)
+            return Link(textOfLink: textOfLink, href: href, filename: filename)
         }
     }
 }
@@ -128,7 +128,7 @@ extension Link {
         }
         if isFile() {
             let fn = URL(string: href)!.lastPathComponent
-            return Link(text: text, href: href, filename: fn)
+            return Link(textOfLink: textOfLink, href: href, filename: fn)
         } else {
         return nil
         }
@@ -178,7 +178,7 @@ extension LinkList {
         var filtered: [Link]
         switch target {
             case .text:
-                filtered = links.filter {regex.matches($0.text)}
+                filtered = links.filter {regex.matches($0.textOfLink)}
             case .href:
                 filtered = links.filter {regex.matches($0.href)}
             case .filename:
