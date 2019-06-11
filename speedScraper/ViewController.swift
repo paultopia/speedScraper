@@ -9,9 +9,13 @@
 import Cocoa
 import WebKit
 
+let state = State()
+
 class ViewController: NSViewController {
 
     @IBOutlet var webView: WKWebView!
+    
+    @IBOutlet var tableView: NSTableView!
     
     @IBAction func loadButtonPressed(_ sender: Any) {
         print("trying to load from remote")
@@ -25,23 +29,22 @@ class ViewController: NSViewController {
         
     }
     
-    @IBAction func linkButtonPressed(_ sender: Any) {
-
-        webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
-    }
-    
-    
     @IBAction func testDownloadButtonPressed(_ sender: Any) {
-        let testDL = "http://paul-gowder.com/iv-paper.pdf"
+        //let testDL = "http://paul-gowder.com/iv-paper.pdf"
         let downloader = Downloader()
-        print(downloader.dirPath.absoluteString)
-        print(downloader.dirPath)
-        downloader.download(inURL: testDL)
+        if let targets =  state.currentLinks {
+            downloader.download(linkList: targets.dedupe().onlyPDFs())
+        }
+        //print(downloader.dirPath.absoluteString)
+        //print(downloader.dirPath)
+        //downloader.download(inURL: testDL)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         webView.configuration.userContentController.add(self, name: "jsHandler")
+        tableView.delegate = self
+        tableView.dataSource = self
 
         // Do any additional setup after loading the view.
 
@@ -62,12 +65,58 @@ extension ViewController: WKScriptMessageHandler {
             let incoming = message.body
             //print(incoming)
             let links = decodeLinks(incoming as! String)
-            let cleanLinks = links.dedupe().onlyPDFs()
-            print(cleanLinks.map {$0.href})
-            print("here comes the great experiment!")
-            let downloader = Downloader()
-            downloader.download(linkList: cleanLinks)
+            state.loadUp(links.defrag().withFilenames())
+            tableView.reloadData()
+            //let cleanLinks = links.dedupe().onlyPDFs()
+            //print(cleanLinks.map {$0.href})
+            //print("here comes the great experiment!")
+            //let downloader = Downloader()
+            //downloader.download(linkList: cleanLinks)
             
         }
     }
+}
+
+extension ViewController: NSTableViewDataSource {
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return state.currentLinks?.count ?? 0
+    }
+}
+
+extension ViewController: NSTableViewDelegate {
+    
+    enum CellIDs: String {
+        case FilenameCellID
+        case PathCellID
+        case DescriptionCellID
+    }
+    
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        
+        var text: String = ""
+        var cellIdentifier: String = ""
+        
+        guard let item = state.currentLinks?[row] else {
+            return nil
+        }
+        
+        if tableColumn == tableView.tableColumns[0] {
+            text = item.filename!
+            cellIdentifier = CellIDs.FilenameCellID.rawValue
+        } else if tableColumn == tableView.tableColumns[1] {
+            text = item.href
+            cellIdentifier = CellIDs.PathCellID.rawValue
+        } else if tableColumn == tableView.tableColumns[2] {
+            text = item.text
+            print(item.text)
+            cellIdentifier = CellIDs.DescriptionCellID.rawValue
+        }
+        
+        if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
+            cell.textField?.stringValue = text
+            return cell
+        }
+        return nil
+    }
+    
 }
