@@ -822,7 +822,7 @@
                                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                             <prototypeCellViews>
                                                                 <tableCellView id="3Ao-gn-15i">
-                                                                    <rect key="frame" x="327.5" y="1" width="311" height="17"/>
+                                                                    <rect key="frame" x="328" y="1" width="311" height="17"/>
                                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                                     <subviews>
                                                                         <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GOA-UZ-V4a">
@@ -980,21 +980,15 @@
                                     <action selector="filterButtonPressed:" target="XfG-lQ-9wD" id="vcp-Ze-NXi"/>
                                 </connections>
                             </button>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-4C-RkC">
-                                <rect key="frame" x="21" y="83" width="77" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="16u-SB-UFr" id="eyq-Ya-3Lc">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="menu"/>
-                                    <menu key="menu" id="EbO-kD-YwC">
-                                        <items>
-                                            <menuItem title="Item 1" state="on" id="16u-SB-UFr"/>
-                                            <menuItem title="Item 2" id="43B-19-WrS"/>
-                                            <menuItem title="Item 3" id="s72-CD-GSy"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ph-eb-Y42">
+                                <rect key="frame" x="270" y="123" width="302" height="22"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="enter regex (or normal string) here" drawsBackground="YES" id="gST-Ge-3ZE">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0PD-0f-qfz">
                                 <rect key="frame" x="20" y="128" width="244" height="17"/>
                                 <autoresizingMask key="autoresizingMask"/>
@@ -1018,7 +1012,7 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-ox-uJ8">
-                                <rect key="frame" x="141" y="79" width="127" height="32"/>
+                                <rect key="frame" x="264" y="87" width="127" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Filter by regex" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2P2-jZ-MAn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -1028,15 +1022,21 @@
                                     <action selector="regexFilterButtonPressed:" target="XfG-lQ-9wD" id="fNc-Fu-xLc"/>
                                 </connections>
                             </button>
-                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3ph-eb-Y42">
-                                <rect key="frame" x="270" y="106" width="302" height="22"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" placeholderString="enter regex (or normal string) here" drawsBackground="YES" id="gST-Ge-3ZE">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WFd-4C-RkC">
+                                <rect key="frame" x="24" y="92" width="238" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="16u-SB-UFr" id="eyq-Ya-3Lc">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="menu"/>
+                                    <menu key="menu" id="EbO-kD-YwC">
+                                        <items>
+                                            <menuItem title="Item 1" state="on" id="16u-SB-UFr"/>
+                                            <menuItem title="Item 2" id="43B-19-WrS"/>
+                                            <menuItem title="Item 3" id="s72-CD-GSy"/>
+                                        </items>
+                                    </menu>
+                                </popUpButtonCell>
+                            </popUpButton>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="IEm-79-zL3" secondAttribute="trailing" constant="128" id="5ss-KJ-ZAg"/>
