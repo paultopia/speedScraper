@@ -135,8 +135,6 @@ extension LinkList {
 }
 
 
-// EXPERIMENTAL/UNTESTED:
-
 // swiped from https://www.hackingwithswift.com/articles/108/how-to-use-regular-expressions-in-swift
 extension NSRegularExpression {
     func matches(_ string: String) -> Bool {
@@ -153,7 +151,6 @@ extension LinkList {
         case filename = "filename"
     }
     
-    // this one works:
     func filterByFileExtensions(extensions: [String]) -> LinkList {
         let onlyFiles = withFilenames()
         let filtered = onlyFiles.filter {extensions.contains(URL(string: $0.href)!.pathExtension)}

@@ -76,6 +76,15 @@ class ViewController: NSViewController {
     
     @IBOutlet var regexField: NSTextField!
     @IBAction func regexFilterButtonPressed(_ sender: Any) {
+        guard let target = LinkList.RegexTarget(rawValue: regexPopup.titleOfSelectedItem ?? "")  else {
+            return
+        }
+        let pattern = regexField.stringValue
+        guard let links = state.downloadedLinks else {
+            return
+        }
+        state.currentLinks = links.withFilenames().filterByRegex(pattern: pattern, target: target)
+        tableView.reloadData()
     }
     
     override func viewDidLoad() {
