@@ -67,7 +67,6 @@ extension ViewController: WKScriptMessageHandler {
             let links = decodeLinks(incoming as! String)
             state.loadUp(links.defrag().withFilenames())
             tableView.reloadData()
-            state.printCurrentState()
             //let cleanLinks = links.dedupe().onlyPDFs()
             //print(cleanLinks.map {$0.href})
             //print("here comes the great experiment!")
@@ -89,6 +88,7 @@ extension ViewController: NSTableViewDelegate {
     enum CellIDs: String {
         case PathCellID
         case DescriptionCellID
+        case FilenameCellID
     }
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
@@ -101,11 +101,18 @@ extension ViewController: NSTableViewDelegate {
         }
         
         if tableColumn == tableView.tableColumns[0] {
-            text = item.textOfLink
+            if item.textOfLink == "" {
+                text = "none"
+            } else {
+                text = item.textOfLink
+            }
             cellIdentifier = CellIDs.DescriptionCellID.rawValue
         } else if tableColumn == tableView.tableColumns[1] {
             text = item.href
             cellIdentifier = CellIDs.PathCellID.rawValue
+        } else if tableColumn == tableView.tableColumns[2] {
+            text = item.filename!
+            cellIdentifier = CellIDs.FilenameCellID.rawValue
         }
         
         if let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier(rawValue: cellIdentifier), owner: nil) as? NSTableCellView {
