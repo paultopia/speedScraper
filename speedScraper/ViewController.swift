@@ -12,8 +12,7 @@ import WebKit
 let state = State()
 
 class ViewController: NSViewController {
-
-    @IBOutlet var webView: WKWebView!
+    let webView = WKWebView()
     
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var urlToScrape: NSTextField!
