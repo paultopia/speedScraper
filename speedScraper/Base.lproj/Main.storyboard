@@ -748,6 +748,9 @@
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            <connections>
+                                                <action selector="regexFilterButtonPressed:" target="XfG-lQ-9wD" id="Ir5-XW-OSh"/>
+                                            </connections>
                                         </textFieldCell>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EeZ-ox-uJ8">
@@ -813,6 +816,9 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="loadButtonPressed:" target="XfG-lQ-9wD" id="KIe-Sh-fwb"/>
+                                </connections>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IMs-7h-E02">
                                 <rect key="frame" x="1" y="192" width="94" height="17"/>
@@ -991,6 +997,9 @@
                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
+                                <connections>
+                                    <action selector="filterButtonPressed:" target="XfG-lQ-9wD" id="xP7-Tc-owg"/>
+                                </connections>
                             </textField>
                             <button verticalHuggingPriority="750" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VOB-Nu-s2a">
                                 <rect key="frame" x="586" y="142" width="71" height="32"/>
