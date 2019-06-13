@@ -12,7 +12,6 @@ import WebKit
 let state = State()
 
 class ViewController: NSViewController {
-    let webView = WKWebView()
     
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var urlToScrape: NSTextField!
@@ -20,11 +19,15 @@ class ViewController: NSViewController {
     @IBAction func loadButtonPressed(_ sender: Any) {
         print("trying to load from remote")
         let toLoad = urlToScrape.stringValue
-        webView.load(toLoad)
+        state.reset() // there's some kind of bug where webview fails on attempt to load a second page, so I'm destroying it and recreating it on every load.
+        print("creating webview")
+        state.webView = WKWebView()
+        state.webView!.configuration.userContentController.add(self, name: "jsHandler")
+        state.webView!.load(toLoad)
         print("waiting...")
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             print("now trying to print links")
-            self.webView.evaluateJavaScript(extractContentJS, completionHandler: nil)
+            state.webView!.evaluateJavaScript(extractContentJS, completionHandler: nil)
         })
         
     }
@@ -88,7 +91,6 @@ class ViewController: NSViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.configuration.userContentController.add(self, name: "jsHandler")
         tableView.delegate = self
         tableView.dataSource = self
         

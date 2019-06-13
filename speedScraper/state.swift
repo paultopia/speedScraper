@@ -7,17 +7,26 @@
 //
 
 import Foundation
+import WebKit
 
 final class State {
     var downloadedLinks: LinkList?
     var currentLinks: LinkList?
+    var webView: WKWebView?
     init(){
         downloadedLinks = nil
         currentLinks = nil
+        webView = nil
     }
     func loadUp(_ linkList: LinkList) {
         downloadedLinks = linkList
         currentLinks = linkList
+    }
+    
+    func reset(){
+        downloadedLinks = nil
+        currentLinks = nil
+        webView = nil
     }
     
     func printCurrentState(){
