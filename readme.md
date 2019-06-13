@@ -1,1 +1,1 @@
-objective: bulk download links in parallel given a webpage. currently: can scrape links from a webpage
+Mini-application to pass a URL and get downloadable (file) links, filter by extension or regex, and download.  Solves the annoying problem of webpages with, for example, a bunch of PDF files that you have to right-click and download individually in the browser (like Humble Bundle books and stuff).  MacOS gui.  Should mostly work, but the UI is a little uggo right now; will fix.  
