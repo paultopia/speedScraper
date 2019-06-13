@@ -15,6 +15,7 @@ class ViewController: NSViewController {
     
     @IBOutlet var tableView: NSTableView!
     @IBOutlet var urlToScrape: NSTextField!
+    @IBOutlet var progressSpinner: NSProgressIndicator!
     
     @IBAction func loadButtonPressed(_ sender: Any) {
         print("trying to load from remote")
@@ -24,10 +25,14 @@ class ViewController: NSViewController {
         state.webView = WKWebView()
         state.webView!.configuration.userContentController.add(self, name: "jsHandler")
         state.webView!.load(toLoad)
+        progressSpinner.isHidden = false
+        progressSpinner.startAnimation(self)
         print("waiting...")
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(3), execute: {
             print("now trying to print links")
             state.webView!.evaluateJavaScript(extractContentJS, completionHandler: nil)
+            self.progressSpinner.stopAnimation(self)
+            self.progressSpinner.isHidden = true
         })
         
     }
@@ -97,6 +102,7 @@ class ViewController: NSViewController {
         regexPopup.removeAllItems()
         regexPopup.addItems(withTitles: regexOptions)
         regexPopup.selectItem(at: 0)
+        progressSpinner.isHidden = true
 
         // Do any additional setup after loading the view.
 

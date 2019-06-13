@@ -971,7 +971,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView id="3Ao-gn-15i">
-                                                            <rect key="frame" x="328" y="1" width="311" height="17"/>
+                                                            <rect key="frame" x="327.5" y="1" width="311" height="17"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" translatesAutoresizingMaskIntoConstraints="NO" id="GOA-UZ-V4a">
@@ -1039,6 +1039,10 @@
                                     </menu>
                                 </popUpButtonCell>
                             </popUpButton>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="USR-pW-jY9">
+                                <rect key="frame" x="679" y="429" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="cYk-qI-Edn" secondAttribute="trailing" constant="97" id="0nk-FF-Vjv"/>
@@ -1054,6 +1058,7 @@
                     </view>
                     <connections>
                         <outlet property="filterField" destination="8V7-Ve-GdB" id="eqh-mP-Tf9"/>
+                        <outlet property="progressSpinner" destination="USR-pW-jY9" id="7dr-8u-7jd"/>
                         <outlet property="regexField" destination="3ph-eb-Y42" id="76q-DN-6Th"/>
                         <outlet property="regexPopup" destination="WFd-4C-RkC" id="oPP-oH-hh3"/>
                         <outlet property="tableView" destination="Bdv-6W-ah7" id="Ygf-Bn-IQt"/>
