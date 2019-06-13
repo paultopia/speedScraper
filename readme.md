@@ -8,6 +8,20 @@ There are a bunch of web pages that provide multiple files that one might want t
 
 This app.  It pops up a GUI (MacOS, 10.12 and above) where you can enter a URL.  It loads that URL in a hidden webview (basically an instance of Safari in the background), and gives it three seconds, then it grabs every link. Then you can filter the list of links by file extension, or by a regular expression match across either entire url, filename, or link text (or just remove individual items). Then you can hit the download button and speedScraper will create a subfolder in your Downloads folder and download everything you've asked for into it.
 
+## How to Get It
+
+1.  Go to [the latest release](https://github.com/paultopia/speedScraper/releases/latest).
+
+2.  Download it.
+
+3.  Unzip the file. 
+
+4.  Save it wherever you want.
+
+5.  Control-click it and choose "open" to tell it it's ok to run unsigned apps.
+
+6.  Profit!
+
 ## Good things
 
 Even though duplicates may show up in the filter table, it's smart enough not to download duplicate links more than once.
